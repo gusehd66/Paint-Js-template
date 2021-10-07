@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
     />
-    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="./css/app.css" />
     <title>Document</title>
   </head>
   <body>
@@ -29,6 +30,14 @@
         <button id="jsTransparent">Transparent</button>
         <button id="jsSave">Save</button>
       </div>
+
+      <form class="jsSize">
+        <span>Canvas-Size : </span>
+        <input id="jsWidth" type="number" placeholder="Width" required />
+        <input id="jsHeight" type="number" placeholder="Height" required />
+        <input id="jsSubmit" type="submit" value="submit" />
+      </form>
+
       <div class="controls__colors" id="jsColors">
         <div
           class="controls__color jsColor"
@@ -66,8 +75,14 @@
           class="controls__color jsColor"
           style="background-color: #5856d6"
         ></div>
+
+        <div class="colorSelect jsColor">
+          <form>
+            <input id="jsColorSelect" type="color" />
+          </form>
+        </div>
       </div>
     </div>
-    <script src="/js/app.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>

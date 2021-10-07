@@ -5,6 +5,8 @@ const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const save = document.getElementById("jsSave");
 const transparent = document.getElementById("jsTransparent");
+const selectColor = document.querySelector("#jsColorSelect");
+const sizeForm = document.querySelector(".jsSize");
 
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 700;
@@ -89,6 +91,33 @@ function handleSaveClick() {
   link.click();
 }
 
+function handleChangeColor(event) {
+  const selectValue = selectColor.value;
+  ctx.strokeStyle = selectValue;
+  ctx.fillStyle = selectValue;
+}
+
+function handleColor(event) {
+  const color = event.target.style.backgroundColor;
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+}
+
+function handleCanvasSize(event) {
+  const changeCanvasSizeWidth = sizeForm[0].value;
+  const changeCanvasSizeHeight = sizeForm[1].value;
+
+  event.preventDefault();
+
+  canvas.style.width = `${changeCanvasSizeWidth}px`;
+  canvas.style.height = `${changeCanvasSizeHeight}px`;
+  canvas.width = changeCanvasSizeWidth;
+  canvas.height = changeCanvasSizeHeight;
+
+  sizeForm[0].value = "";
+  sizeForm[1].value = "";
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
@@ -114,4 +143,12 @@ if (mode) {
 
 if (save) {
   save.addEventListener("click", handleSaveClick);
+}
+
+if (sizeForm) {
+  sizeForm.addEventListener("submit", handleCanvasSize);
+}
+
+if (selectColor) {
+  selectColor.addEventListener("input", handleChangeColor);
 }
